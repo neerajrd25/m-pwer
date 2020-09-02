@@ -25,7 +25,8 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
-        ]
+        ],
+        "urls": ["*/icon"]
       }
     },
     {
