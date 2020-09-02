@@ -9,7 +9,9 @@ if (environment.production) {
 }
 
 window.addEventListener('online', (event) => {
-  console.log("You are now connected to the network.");
+  if (confirm("You are connected back? would like to update the app?")) {
+    window.location.reload();
+  }
 });
 
 platformBrowserDynamic().bootstrapModule(AppModule)

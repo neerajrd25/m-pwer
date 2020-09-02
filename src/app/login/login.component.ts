@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     const login = this.loginForm.value as Login;
-    login.password="2kf8210d0";
+    // login.password="2kf8210d0";
     login.id_type = "email";
     login.tenantid = 3;
 

@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   showButton = false;
 
   constructor(private swUpdate: SwUpdate, push: SwPush) {
-    
+
     // push.messages.subscribe(mes=>{
     //   console.log(JSON.stringify(mes))
     // })
@@ -32,13 +32,21 @@ export class AppComponent implements OnInit {
           window.location.reload();
         }
       });
+
+      // navigator.serviceWorker.addEventListener('online', (event) => {
+      //   if (confirm("You are connected back? would like to update the app?")) {
+      //     window.location.reload();
+      //   }
+      // });
+
+
     }
 
     // this.swUpdate.available.subscribe((data)=>{
     //     console.log(data);
     // })
 
-    
+
 
   }
 
