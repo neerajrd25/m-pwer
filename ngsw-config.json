@@ -3,11 +3,11 @@
   "index": "/index.html",
   "dataGroups": [
     {
-      "name": "mission-api",
-      "urls": ["https://staging-core-optimy/api"],
+      "name": "task-api",
+      "urls": ["https://staging-core-optimy/api/v1/"],
       "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 20,
+        "strategy": "performance",
+        "maxSize": 50,
         "maxAge": "1h",
         "timeout": "5s"
       }
