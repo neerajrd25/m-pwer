@@ -9,8 +9,8 @@ import { Task } from '../_models/app.model';
 })
 export class DashboardComponent implements OnInit {
 
-  taskList:Task[]=[];
-  parentId:number
+  taskList: Task[] = [];
+  parentId: number
   constructor(private service: DashboardService) { }
 
   ngOnInit(): void {
@@ -18,11 +18,14 @@ export class DashboardComponent implements OnInit {
     this.getTasks()
   }
 
-  getTasks(){
-    this.service.postTask(this.parentId).subscribe((data)=>{
-      console.log(data);
+  getTasks() {
+    this.service.postTask(this.parentId).subscribe((data) => {
       this.taskList = data.data;
     })
+  }
+
+  trackById(index, obj) {
+    return obj ? obj.id : undefined
   }
 
 }
