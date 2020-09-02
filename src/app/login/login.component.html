@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm">
+
+    <div class="display d-flex justify-content-center align-items-center flex-column">
+        <img class="" src="../../assets/icons/logo.png" alt="Kognitive" />
+
+        <mat-form-field appearance="outline" class="field-size mb-3">
+            <mat-label>Empoyee ID</mat-label>
+            <input matInput type="text" formControlName="email" />
+            <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="field-size mb-3">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+            <mat-icon matPrefix>lock</mat-icon>
+
+        </mat-form-field>
+        <button mat-raised-button class="btn-round" color="primary" (click)="onSubmit()" [disabled]="!loginForm.valid">
+            Login
+        </button>
+    </div>
+
+</form>
