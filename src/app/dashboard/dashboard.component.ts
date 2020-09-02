@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
+import { Task } from '../_models/app.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +9,19 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
+  taskList:Task[]=[];
+  parentId:number
   constructor(private service: DashboardService) { }
 
   ngOnInit(): void {
+    this.parentId = 357
     this.getTasks()
   }
 
   getTasks(){
-    this.service.postTask().subscribe((data)=>{
+    this.service.postTask(this.parentId).subscribe((data)=>{
       console.log(data);
+      this.taskList = data.data;
     })
   }
 

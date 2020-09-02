@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<ul >
+<li *ngFor="let item of taskList; trackBy:item?.id"> {{item.attr.description}} {{item.status}} </li>
+
+</ul>
