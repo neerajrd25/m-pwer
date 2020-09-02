@@ -1,8 +1,8 @@
 .chips {
   padding-left: 12px;
   padding-right: 12px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   border-radius: 8px;
 }
 
@@ -15,4 +15,11 @@
 
 .font-medium{
     font-size: medium;
+}
+.spacer {
+    flex: 1;
+}
+
+.font-red{
+    color:red
 }

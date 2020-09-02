@@ -1,6 +1,7 @@
-<div class="container-fluid">
-    <div class="d-flex content justify-content-around ">
+<div class="container">
+    <div class="d-flex content">
         <button mat-flat-button color="primary"> My Task</button>
+        <span class="spacer"></span>
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_horizontal</mat-icon>
         </button>
@@ -17,33 +18,62 @@
 
 
 </div>
-<div class="container-fluid py-2">
-
+<div class="container py-2">
+    
     <div>
         <h2>Today's Progress</h2>
         <mat-slider min="0" [max]="taskList.length" step="1" [value]="doneCount" tickInterval="auto"></mat-slider>
-       
+    </div>
+    <div class="mb-3 d-flex justify-content-around">
+        <span class="chips red">High {{criticalCount}}</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_horizontal</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span>Btn 1</span>
+            </button>
+            <button mat-menu-item>
+                <span>Btn 3</span>
+            </button>
+        </mat-menu>
 
     </div>
-    <div class="mb-3">
-        <span class="chips red">High {{criticalCount}}</span>
-    </div>
     <ul>
-        <li *ngFor="let item of (taskList | taskPriorityPipe :'High') ; trackBy:trackById; " class="my-4">
-            <p class="font-medium font-weight-bold"> {{item.attr.description}} </p>
-            <span *ngIf="item.status!== 'Done'"> Due Today </span>
+        <li *ngFor="let item of (taskList | taskPriorityPipe :'High') ; trackBy:trackById; " class="font-medium font-weight-bold my-3">
+            <p class="my-1"> {{item.attr.description}} </p>
+            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red"> Due Today </span>
+            <ng-template #showTime>
+                <span class="font-red"> Due {{item.due_dt}} </span>
+            </ng-template>
         </li>
 
     </ul>
     <!-- </div> -->
 
-    <div class="mb-3">
+    <div class="mb-1 d-flex justify-content-around">
         <span class="chips gray">ALl {{taskList.length}}</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_horizontal</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span>Btn 1</span>
+            </button>
+            <button mat-menu-item>
+                <span>Btn 3</span>
+            </button>
+        </mat-menu>
     </div>
     <ul>
-        <li *ngFor="let item of taskList; trackBy:trackById" class="my-4">
-            <p class="font-medium font-weight-bold"> {{item.attr.description}} {{item.status}} </p>
-            <span *ngIf="item.status!== 'Done'"> Due Today </span>
+        <li *ngFor="let item of taskList; trackBy:trackById" class="font-medium font-weight-bold my-3">
+            <p class="my-1"> {{item.attr.description}} </p>
+            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red"> Due Today </span>
+            <ng-template #showTime>
+                <span class="font-red"> Due {{item.due_dt}} </span>
+            </ng-template>
         </li>
 
     </ul>

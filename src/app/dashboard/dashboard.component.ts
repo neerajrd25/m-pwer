@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
 
   doneCount: number;
 
+  currentDate : Date;
+
   constructor(private service: DashboardService,
     private notificationService: NotificationService
   ) { }
@@ -23,6 +25,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.parentId = 357
     this.getTasks()
+
+    this.currentDate = new Date('2019-06-05')
   }
 
   getTasks() {

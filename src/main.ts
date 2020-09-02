@@ -8,9 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-// navigator.serviceWorker.ready.then((data)=>{
-//   console.log('ready', data)
-// })
+window.addEventListener('online', (event) => {
+  console.log("You are now connected to the network.");
+});
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
