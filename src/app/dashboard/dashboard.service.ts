@@ -10,11 +10,9 @@ export class DashboardService {
   constructor(private api: ApiService) { }
 
   postTask(){
-    let headers = new Headers();
-    // headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('apptoken',API_TOKEN);
 
-    return this.api.get('task/list',headers)
+
+    return this.api.post('task/list')
 
 
 

@@ -34,10 +34,9 @@ export class LoginComponent implements OnInit {
 
     this.service.doLogin(login).subscribe((data) => {
       if (data) {
-        sessionStorage.setItem('USER_TOKEN', "token")
+        sessionStorage.setItem('usertoken', data.user_token)
+        sessionStorage.setItem('user_id', data.user_id)
         this.router.navigate(['dashboard']);
-      } else {
-
       }
 
     },

@@ -30,7 +30,7 @@ export class ApiService {
     return this.http.get(`${this.url}/${endpoint}`, reqOpts);
   }
 
-  public post(endpoint: string, body: any, reqOpts?: any): Observable<any> {
+  public post(endpoint: string, body?: any, reqOpts?: any): Observable<any> {
     return this.http.post(
       `${this.url}/${endpoint}`,
       body,

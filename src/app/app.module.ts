@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './auth-interceptor';
 
 
 
@@ -70,7 +71,9 @@ import { LoginComponent } from './login/login.component';
 
   ],
   providers: [
-    { provide: 'BASE_URL', useValue: 'https://staging-core-optimy.com/api/v1/' },
+    { provide: 'BASE_URL', useValue: 'https://staging-core-optimy.com/api/v1' },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
 
   ],
   exports:[MatInputModule,

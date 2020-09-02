@@ -3,6 +3,7 @@ import { ApiService } from 'src/api.service';
 import { of } from 'rxjs';
 import { API_TOKEN } from 'src/app.constants';
 import { Login } from '../_models/login.model';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,20 @@ export class LoginService {
 
 
   doLogin(login:Login){
-    let headers = new Headers();
-    // headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('apptoken',API_TOKEN);
-    headers.append('Content-Type','application/x-form-urlencoded')
+    let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+    
+    
+    
+    
+    
+    const options = { headers: headers};
+    // const formData = new FormData();
+    // formData.append('email',login.email)
+    // formData.append('password',login.password)
+    // formData.append('id_type',login.id_type)
+    // formData.append('tenantid',String(login.tenantid))
     let body = `email=${login.email}&password=${login.password}&tenantid=${login.tenantid}&id_type=${login.id_type}`;
-    return this.api.post('login/password',body, headers )
+    return this.api.post('login/password',body, options )
 
 
   }
