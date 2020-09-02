@@ -7,18 +7,22 @@ import { API_TOKEN } from 'src/app.constants';
 export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = sessionStorage.getItem('usertoken'); // you probably want to store it in localStorage or something
+        req = req.clone({
+            headers: req.headers.set('apptoken', `${API_TOKEN}`)
 
-        if (!token) {
-            return next.handle(req);
-        }
-
-        const req1 = req.clone({
-            headers: req.headers.set('apptoken', `${API_TOKEN}`).set('usertoken',sessionStorage.getItem('usertoken'))
-            ,
         });
 
-        return next.handle(req1);
+        if (!req.url.includes('password')) {
+            const token = sessionStorage.getItem('usertoken'); // you probably want to store it in localStorage or something
+            const req1 = req.clone({
+                headers: req.headers.set('usertoken', token)
+                ,
+            });
+            return next.handle(req1);
+
+        }
+        return next.handle(req);
+
     }
 
 }

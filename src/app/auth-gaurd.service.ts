@@ -9,7 +9,7 @@ export class AuthGaurdService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (sessionStorage.getItem('usertoken')) {
       // logged in so return true
-      this.router.navigate(['/dashboard'], { queryParams: { returnUrl: state.url } });
+      // this.router.navigate(['/dashboard'], { queryParams: { returnUrl: state.url } });
       return true;
     } else {
       // not logged in so redirect to login page with the return url

@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { Login } from '../_models/app.model';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private service: LoginService,
+    private notificationService: NotificationService
 
   ) { }
 
@@ -37,11 +39,14 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('usertoken', data.user_token)
         sessionStorage.setItem('user_id', data.user_id)
         this.router.navigate(['dashboard']);
+        this.notificationService.success('Login Succesfull')
+
       }
 
     },
       err => {
         console.log(err);
+        this.notificationService.error('Login Error')
       }
     )
 
