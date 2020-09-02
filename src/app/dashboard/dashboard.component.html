@@ -19,6 +19,12 @@
 </div>
 <div class="container-fluid py-2">
 
+    <div>
+        <h2>Today's Progress</h2>
+        <mat-slider min="0" [max]="taskList.length" step="1" [value]="doneCount" tickInterval="auto"></mat-slider>
+       
+
+    </div>
     <div class="mb-3">
         <span class="chips red">High {{criticalCount}}</span>
     </div>

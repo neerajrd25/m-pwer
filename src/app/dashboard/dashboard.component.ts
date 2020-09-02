@@ -12,7 +12,10 @@ export class DashboardComponent implements OnInit {
 
   taskList: Task[] = [];
   parentId: number
-  criticalCount: number
+  criticalCount: number;
+
+  doneCount: number;
+
   constructor(private service: DashboardService,
     private notificationService: NotificationService
   ) { }
@@ -27,6 +30,7 @@ export class DashboardComponent implements OnInit {
       this.taskList = data.data;
       this.notificationService.success('Data fetched')
       this.criticalCount = this.taskList.filter(obj => obj.attr.priority === 'High').length;
+      this.doneCount = this.taskList.filter(obj => obj.status === 'Done').length;
     })
   }
 
