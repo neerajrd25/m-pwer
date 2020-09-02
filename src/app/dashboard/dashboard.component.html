@@ -22,7 +22,7 @@
 
     <div>
         <h2>Today's Progress</h2>
-        <mat-slider min="0" [max]="taskList.length" step="1" [value]="doneCount" tickInterval="auto"></mat-slider>
+       <span *ngIf="taskList.length >0" class="font-weight-bold"> {{(doneCount/ taskList.length) | percent}} </span>   <mat-slider min="0" [max]="taskList.length" step="1" [value]="doneCount" tickInterval="auto"></mat-slider>
     </div>
     <div class="mb-3 d-flex justify-content-around">
         <span class="chips red">High {{criticalCount}}</span>
