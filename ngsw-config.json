@@ -14,7 +14,6 @@
     }
   ],
   "assetGroups": [
-    
     {
       "name": "app",
       "installMode": "prefetch",
@@ -26,7 +25,10 @@
           "/*.css",
           "/*.js"
         ],
-        "urls": ["*/icon"]
+        "urls": [
+          "https://fonts.googleapis.com/css",
+          "https://fonts.googleapis.com/icon"
+        ]
       }
     },
     {
