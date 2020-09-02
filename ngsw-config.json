@@ -4,7 +4,7 @@
   "dataGroups": [
     {
       "name": "task-api",
-      "urls": ["https://staging-core-optimy/api/v1/"],
+      "urls": ["https://staging-core-optimy/api/v1/task/list"],
       "cacheConfig": {
         "strategy": "performance",
         "maxSize": 5,
