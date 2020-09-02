@@ -19,7 +19,7 @@
 
 </div>
 <div class="container py-2">
-    
+
     <div>
         <h2>Today's Progress</h2>
         <mat-slider min="0" [max]="taskList.length" step="1" [value]="doneCount" tickInterval="auto"></mat-slider>
@@ -41,10 +41,15 @@
 
     </div>
     <ul>
-        <li *ngFor="let item of (taskList | taskPriorityPipe :'High') ; trackBy:trackById; " class="font-medium font-weight-bold my-3">
+        <li *ngFor="let item of (taskList | taskPriorityPipe :'High') ; trackBy:trackById; "
+            class="font-medium font-weight-bold my-3">
             <p class="my-1"> {{item.attr.description}} </p>
-            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red"> Due Today </span>
+
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red">
+                Due Today </span>
             <ng-template #showTime>
+                <mat-icon>keyboard_arrow_right</mat-icon>
                 <span class="font-red"> Due {{item.due_dt}} </span>
             </ng-template>
         </li>
@@ -70,8 +75,13 @@
     <ul>
         <li *ngFor="let item of taskList; trackBy:trackById" class="font-medium font-weight-bold my-3">
             <p class="my-1"> {{item.attr.description}} </p>
-            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red"> Due Today </span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+
+            <span *ngIf="item.due_dt === currentDate| date:'yyyy-mm-dd'; else showTime" class="font-red"> Due Today
+            </span>
             <ng-template #showTime>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+
                 <span class="font-red"> Due {{item.due_dt}} </span>
             </ng-template>
         </li>
