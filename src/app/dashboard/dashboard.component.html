@@ -1,4 +1,44 @@
-<ul >
-<li *ngFor="let item of taskList; trackBy:trackById"> {{item.attr.description}} {{item.status}} </li>
+<div class="container-fluid">
+    <div class="d-flex content justify-content-around ">
+        <button mat-flat-button color="primary"> My Task</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_horizontal</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span>Btn 1</span>
+            </button>
+            <button mat-menu-item>
+                <span>Btn 3</span>
+            </button>
+        </mat-menu>
 
-</ul>
+    </div>
+
+
+</div>
+<div class="container-fluid py-2">
+
+    <div class="mb-3">
+        <span class="chips red">High {{criticalCount}}</span>
+    </div>
+    <ul>
+        <li *ngFor="let item of (taskList | taskPriorityPipe :'High') ; trackBy:trackById; " class="my-4">
+            <p class="font-medium font-weight-bold"> {{item.attr.description}} </p>
+            <span *ngIf="item.status!== 'Done'"> Due Today </span>
+        </li>
+
+    </ul>
+    <!-- </div> -->
+
+    <div class="mb-3">
+        <span class="chips gray">ALl {{taskList.length}}</span>
+    </div>
+    <ul>
+        <li *ngFor="let item of taskList; trackBy:trackById" class="my-4">
+            <p class="font-medium font-weight-bold"> {{item.attr.description}} {{item.status}} </p>
+            <span *ngIf="item.status!== 'Done'"> Due Today </span>
+        </li>
+
+    </ul>
+</div>

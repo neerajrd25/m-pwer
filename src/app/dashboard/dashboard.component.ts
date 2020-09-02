@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   taskList: Task[] = [];
   parentId: number
+  criticalCount: number
   constructor(private service: DashboardService,
     private notificationService: NotificationService
   ) { }
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
     this.service.postTask(this.parentId).subscribe((data) => {
       this.taskList = data.data;
       this.notificationService.success('Data fetched')
-
+      this.criticalCount = this.taskList.filter(obj => obj.attr.priority === 'High').length;
     })
   }
 

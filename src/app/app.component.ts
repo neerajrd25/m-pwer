@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,15 @@ export class AppComponent implements OnInit {
   deferredPrompt: any;
   showButton = false;
 
-  constructor(private swUpdate: SwUpdate) {
-
+  constructor(private swUpdate: SwUpdate, push: SwPush) {
+    
+    // push.messages.subscribe(mes=>{
+    //   console.log(JSON.stringify(mes))
+    // })
+    // const pushKey ='BJbI-2PHC0KS-gdzVdwCnoL988yhDeUwwijPmuQP-iZB114aMraZYXH6KzUqIYGHkmiUBmd7DFYISCM0N_SH71c';
+    // push.requestSubscription({serverPublicKey: pushKey}).then((pushsubscription)=>{
+    //   console.log(pushsubscription.toJSON)
+    // })
   }
   ngOnInit() {
 
@@ -27,9 +34,9 @@ export class AppComponent implements OnInit {
       });
     }
 
-    this.swUpdate.available.subscribe((data)=>{
-        console.log(data);
-    })
+    // this.swUpdate.available.subscribe((data)=>{
+    //     console.log(data);
+    // })
 
     
 

@@ -36,7 +36,7 @@ import { AuthInterceptor } from './auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,6 @@ import { AuthInterceptor } from './auth-interceptor';
     MatTooltipModule,
     MatProgressBarModule,
     MatFormFieldModule,
-
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
@@ -74,11 +73,11 @@ import { AuthInterceptor } from './auth-interceptor';
     { provide: 'BASE_URL', useValue: 'https://staging-core-optimy.com/api/v1' },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
-
   ],
-  exports:[MatInputModule,
-  
-  
+  exports: [
+
+
+
   ],
   bootstrap: [AppComponent]
 })

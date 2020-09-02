@@ -7,7 +7,7 @@
       "urls": ["https://staging-core-optimy/api/v1/"],
       "cacheConfig": {
         "strategy": "performance",
-        "maxSize": 50,
+        "maxSize": 5,
         "maxAge": "1h",
         "timeout": "5s"
       }
